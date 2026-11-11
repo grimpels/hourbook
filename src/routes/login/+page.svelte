@@ -6,7 +6,7 @@
 	let loading = $state(false);
 </script>
 
-<svelte:head><title>{t('login.title')} · Pontaj</title></svelte:head>
+<svelte:head><title>{t('login.title')} · Hourbook</title></svelte:head>
 
 <div class="wrap">
 	<form
@@ -20,6 +20,7 @@
 			};
 		}}
 	>
+		<img class="semn" src="/favicon.svg" alt="" width="44" height="44" />
 		<h1>{t('app.name')}</h1>
 		<p class="muted sub">{t('login.title')}</p>
 
@@ -27,7 +28,7 @@
 
 		<div class="field">
 			<label for="username">{t('login.user')}</label>
-			<input id="username" name="username" autocomplete="username" value={form?.username ?? ''} required />
+			<input id="username" name="username" type="text" autocomplete="username" value={form?.username ?? ''} required />
 		</div>
 
 		<div class="field">
@@ -65,6 +66,7 @@
 		gap: 14px;
 	}
 	h1 { font-size: 22px; }
+	.semn { display: block; margin-bottom: -4px; }
 	.sub { margin: -10px 0 4px; font-size: 14px; }
 	.field { margin: 0; }
 	.full { width: 100%; justify-content: center; margin-top: 6px; }

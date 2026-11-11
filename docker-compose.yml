@@ -1,12 +1,12 @@
-# Pontaj — time tracking. Start with `docker compose up -d`, then open the
-# setup address printed by `docker compose logs pontaj`.
+# Hourbook — time tracking. Start with `docker compose up -d`, then open the
+# setup address printed by `docker compose logs hourbook`.
 services:
-  pontaj:
-    image: ghcr.io/grimpels/pontaj:latest
+  hourbook:
+    image: ghcr.io/grimpels/hourbook:latest
     build: .
     restart: unless-stopped
     ports:
-      - "${PONTAJ_PORT:-3000}:3000"
+      - "${HOURBOOK_PORT:-3000}:3000"
     # Optional settings (see .env.example). The file may be missing.
     env_file:
       - path: .env

@@ -34,7 +34,6 @@
 		--text-faint: #6f6f68;
 		--accent: #7fbf9a;
 		--accent-soft: #26332c;
-		--accent-text: #10201700;
 		--shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
 		--accent-text: #10201a;
 		color-scheme: dark;
@@ -169,7 +168,8 @@ h3 { font-size: var(--text-sm); }
 
 button, input, select, textarea { font: inherit; color: inherit; }
 
-input[type="text"], input[type="password"], input[type="email"], input[type="number"],
+/* `input:not([type])`: un camp fara tip e text pentru browser, deci la fel aici. */
+input:not([type]), input[type="text"], input[type="password"], input[type="email"], input[type="number"],
 input[type="date"], input[type="time"], select {
 	width: 100%;
 	height: var(--control-h);

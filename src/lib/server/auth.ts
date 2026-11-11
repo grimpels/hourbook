@@ -4,6 +4,7 @@
 import { randomBytes, scryptSync, timingSafeEqual, randomUUID } from 'node:crypto';
 import type { Cookies } from '@sveltejs/kit';
 import { db } from './db';
+import { env } from './env';
 
 const SCRYPT = { N: 16384, r: 8, p: 1 };
 const KEYLEN = 64;
@@ -73,17 +74,17 @@ export function userFromCookies(cookies: Cookies): SessionUser | null {
 	return { id: row.id, username: row.username, totp_enabled: row.totp_enabled };
 }
 
-// Contul initial din PONTAJ_USER/PONTAJ_PASS, pentru instalari automate: creat
+// Contul initial din HOURBOOK_USER/HOURBOOK_PASS, pentru instalari automate: creat
 // o singura data, la prima pornire cu DB gol. Fara ele, primul cont se face din
 // pagina de instalare (`/setup`).
 export function seedInitialUser() {
 	const count = (db.prepare('SELECT COUNT(*) AS n FROM users').get() as { n: number }).n;
 	if (count > 0) return;
-	const username = process.env.PONTAJ_USER;
-	const password = process.env.PONTAJ_PASS;
+	const username = env('USER');
+	const password = env('PASS');
 	if (!username || !password) return;
 	createUser(username, password, null);
-	console.log(`[pontaj] Initial account created: ${username}`);
+	console.log(`[hourbook] Initial account created: ${username}`);
 }
 
 export function createUser(username: string, password: string, prefs: string | null): number {

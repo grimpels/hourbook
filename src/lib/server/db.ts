@@ -3,8 +3,9 @@
 import { DatabaseSync } from 'node:sqlite';
 import { mkdirSync } from 'node:fs';
 import { dirname } from 'node:path';
+import { env } from './env';
 
-const file = process.env.PONTAJ_DB ?? 'data/pontaj.db';
+const file = env('DB') ?? 'data/hourbook.db';
 mkdirSync(dirname(file), { recursive: true });
 
 export const db = new DatabaseSync(file);
@@ -78,7 +79,7 @@ function addColumn(table: string, column: string, decl: string) {
 	const cols = db.prepare(`PRAGMA table_info(${table})`).all() as { name: string }[];
 	if (!cols.some((c) => c.name === column)) {
 		db.exec(`ALTER TABLE ${table} ADD COLUMN ${column} ${decl}`);
-		if (!fresh) console.log(`[pontaj] Migration: added ${table}.${column}`);
+		if (!fresh) console.log(`[hourbook] Migration: added ${table}.${column}`);
 	}
 }
 

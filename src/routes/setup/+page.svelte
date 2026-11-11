@@ -42,11 +42,12 @@
 	const [dbInainte, dbDupa] = t('setup.dbInfo').split('{path}');
 </script>
 
-<svelte:head><title>{t('setup.title')} · Pontaj</title></svelte:head>
+<svelte:head><title>{t('setup.title')} · Hourbook</title></svelte:head>
 
 <div class="wrap">
 	<form method="POST" class="card" onsubmit={() => (loading = true)}>
 		<header>
+			<img class="semn" src="/favicon.svg" alt="" width="44" height="44" />
 			<h1>{t('setup.title')}</h1>
 			<p class="muted">{t('setup.intro')}</p>
 		</header>
@@ -60,7 +61,7 @@
 				<label for="token">{t('setup.token')}</label>
 				<input id="token" name="token" type="text" autocomplete="off" spellcheck="false"
 					class="tabular" value={data.token} required />
-				<p class="help">{inainte}<code>docker compose logs pontaj</code>{dupa}</p>
+				<p class="help">{inainte}<code>docker compose logs hourbook</code>{dupa}</p>
 			</section>
 		{/if}
 
@@ -117,7 +118,7 @@
 		<section>
 			<h2>{t('setup.account')}</h2>
 			<label for="username">{t('login.user')}</label>
-			<input id="username" name="username" autocomplete="username" value={form?.username ?? ''} required />
+			<input id="username" name="username" type="text" autocomplete="username" value={form?.username ?? ''} required />
 			<div class="grid">
 				<div><label for="password">{t('settings.password')}</label>
 					<input id="password" name="password" type="password" autocomplete="new-password" minlength="10" required /></div>
@@ -153,6 +154,7 @@
 	}
 	header p { margin: var(--s1) 0 0; font-size: var(--text-sm); }
 	h1 { font-size: 22px; }
+	.semn { display: block; margin-bottom: var(--s3); }
 	h2 { font-size: var(--text-md); margin-bottom: var(--s2); }
 	section { display: flex; flex-direction: column; gap: var(--s2); }
 	section + section { border-top: 1px solid var(--border); padding-top: var(--s5); }

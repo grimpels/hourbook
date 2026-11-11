@@ -1,4 +1,6 @@
-# Pontaj
+<p align="center"><img src="static/icon-512.png" width="88" alt=""></p>
+
+<h1 align="center">Hourbook</h1>
 
 Self-hosted time tracking for freelancers and small teams: log your hours,
 group them by client and project, and turn them into the timesheet or
@@ -41,10 +43,10 @@ data folder. There is no database server to install, connect or update.
 ## Install
 
 ```sh
-mkdir pontaj && cd pontaj
-curl -fsSLO https://raw.githubusercontent.com/grimpels/pontaj/main/docker-compose.yml
+mkdir hourbook && cd hourbook
+curl -fsSLO https://raw.githubusercontent.com/grimpels/hourbook/main/docker-compose.yml
 docker compose up -d
-docker compose logs pontaj
+docker compose logs hourbook
 ```
 
 The log prints a setup address such as
@@ -59,7 +61,7 @@ Open it (with your server's address instead of `<server>`) and choose:
 2. **Site address** — filled in from your browser. Use `https://` if the site
    is served over HTTPS.
 3. **Reverse proxy** — tick it only if a proxy (Caddy, nginx, Traefik…) sits
-   in front of Pontaj. It is detected automatically in most cases.
+   in front of Hourbook. It is detected automatically in most cases.
 4. **Administrator account.**
 
 The setup page closes for good once the first account exists. The token in
@@ -73,8 +75,8 @@ renews a certificate on its own. Point a domain at the server, make sure ports
 80 and 443 are free, then:
 
 ```sh
-curl -fsSLO https://raw.githubusercontent.com/grimpels/pontaj/main/docker-compose.https.yml
-echo "PONTAJ_DOMAIN=time.example.com" >> .env
+curl -fsSLO https://raw.githubusercontent.com/grimpels/hourbook/main/docker-compose.https.yml
+echo "HOURBOOK_DOMAIN=time.example.com" >> .env
 echo "COMPOSE_FILE=docker-compose.yml:docker-compose.https.yml" >> .env
 docker compose up -d
 ```
@@ -98,8 +100,8 @@ To skip the setup page, set the first account and the address in `.env`
 before the first start (see [.env.example](.env.example)):
 
 ```sh
-PONTAJ_USER=admin
-PONTAJ_PASS=at-least-10-characters
+HOURBOOK_USER=admin
+HOURBOOK_PASS=at-least-10-characters
 ORIGIN=https://time.example.com
 ```
 
@@ -109,13 +111,13 @@ Everything is optional. Put it in a `.env` file next to `docker-compose.yml`.
 
 | Variable | Default | Meaning |
 |---|---|---|
-| `PONTAJ_PORT` | `3000` | Port on the host. |
+| `HOURBOOK_PORT` | `3000` | Port on the host. |
 | `TZ` | `UTC` | Time zone for scheduled emails, e.g. `Europe/Bucharest`. |
 | `ORIGIN` | — | Site address. Overrides the setup page. |
-| `PONTAJ_LANG` | `en` | Language of the sign-in page and new accounts (`en`, `ro`). Overrides the setup page. |
-| `PONTAJ_USER`, `PONTAJ_PASS` | — | First account, created at first start. Ignored afterwards. |
+| `HOURBOOK_LANG` | `en` | Language of the sign-in page and new accounts (`en`, `ro`). Overrides the setup page. |
+| `HOURBOOK_USER`, `HOURBOOK_PASS` | — | First account, created at first start. Ignored afterwards. |
 | `ADDRESS_HEADER`, `XFF_DEPTH` | — | Read the client address from a header ([adapter-node](https://svelte.dev/docs/kit/adapter-node#Environment-variables)). Overrides the proxy option of the setup page. |
-| `PONTAJ_DOMAIN` | — | Only with `docker-compose.https.yml`: the domain to get a certificate for. |
+| `HOURBOOK_DOMAIN` | — | Only with `docker-compose.https.yml`: the domain to get a certificate for. |
 
 SMTP, document templates, your company details and the email schedule are set
 in the app, under **Settings** and **Templates**.
@@ -133,7 +135,7 @@ docker compose stop && cp -r data data-backup && docker compose start
 or take a consistent copy while it runs:
 
 ```sh
-docker compose exec pontaj node -e "new (require('node:sqlite').DatabaseSync)('/data/pontaj.db').exec(\"VACUUM INTO '/data/backup.db'\")"
+docker compose exec hourbook node -e "new (require('node:sqlite').DatabaseSync)('/data/hourbook.db').exec(\"VACUUM INTO '/data/backup.db'\")"
 ```
 
 The SMTP password is stored in the database: keep backups private.
@@ -150,9 +152,9 @@ columns or tables; nothing is rewritten or removed.
 ## Without Docker
 
 ```sh
-git clone https://github.com/grimpels/pontaj.git && cd pontaj
+git clone https://github.com/grimpels/hourbook.git && cd hourbook
 npm ci && npm run build
-PONTAJ_DB=./data/pontaj.db PORT=3000 node build
+HOURBOOK_DB=./data/hourbook.db PORT=3000 node build
 ```
 
 The setup address is printed at start, as above.
@@ -171,8 +173,8 @@ through the built-in `node:sqlite`, `otpauth` and `qrcode` for two-factor
 authentication, `nodemailer` for email. No ORM, no CSS framework.
 
 Releases: pushing a tag such as `v1.2.0` runs the tests and publishes the
-image to `ghcr.io/grimpels/pontaj` for amd64 and arm64.
+image to `ghcr.io/grimpels/hourbook` for amd64 and arm64.
 
 ## License
 
-[MIT](LICENSE)
+[MIT](LICENSE). The clock in the icon is from [Lucide](https://lucide.dev) (ISC).

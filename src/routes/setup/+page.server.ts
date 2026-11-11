@@ -7,6 +7,7 @@ import {
 	checkSetupToken, needsSetup, setInstance, cookieSecure, siteOrigin
 } from '$lib/server/instance';
 import { normalizePrefs } from '$lib/prefs';
+import { env } from '$lib/server/env';
 import { translate } from '$lib/i18n';
 
 export const load: PageServerLoad = async ({ url, request }) => {
@@ -18,7 +19,7 @@ export const load: PageServerLoad = async ({ url, request }) => {
 		fixedOrigin: process.env.ORIGIN ?? '',
 		// Un X-Forwarded-For in cerere inseamna aproape sigur ca in fata e un proxy.
 		proxyHint: !!request.headers.get('x-forwarded-for') || !!process.env.ADDRESS_HEADER,
-		dbPath: process.env.PONTAJ_DB ?? 'data/pontaj.db'
+		dbPath: env('DB') ?? 'data/hourbook.db'
 	};
 };
 
@@ -76,7 +77,7 @@ export const actions: Actions = {
 			if (db.isTransaction) db.exec('ROLLBACK');
 			throw e;
 		}
-		console.log(`[pontaj] Setup complete: account "${username}", address ${siteOrigin()}`);
+		console.log(`[hourbook] Setup complete: account "${username}", address ${siteOrigin()}`);
 
 		createSession(userId, cookies, cookieSecure(url));
 		setLangCookie(cookies, prefs.lang, cookieSecure(url));

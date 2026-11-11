@@ -1,11 +1,12 @@
 // Setarile instantei: ce se alege o singura data, in pagina de instalare —
 // adresa site-ului, daca sta in spatele unui proxy, limba implicita. Stau in
 // baza, nu in variabile de mediu, ca instalarea sa nu ceara editarea fisierelor.
-// Variabilele de mediu (ORIGIN, ADDRESS_HEADER, PONTAJ_LANG) au in continuare
+// Variabilele de mediu (ORIGIN, ADDRESS_HEADER, HOURBOOK_LANG) au in continuare
 // prioritate: instalarile mai vechi, configurate asa, merg neschimbate.
 import { randomBytes, timingSafeEqual } from 'node:crypto';
 import type { RequestEvent } from '@sveltejs/kit';
 import { db } from './db';
+import { env as appEnv } from './env';
 import { getSetting, setSetting } from './settings';
 import { isLocale, type Locale } from '$lib/prefs';
 
@@ -27,7 +28,7 @@ export function setInstance(i: Instance) {
 
 /** Limba paginii de autentificare si a conturilor fara preferinte. */
 export function defaultLang(): Locale {
-	const env = process.env.PONTAJ_LANG;
+	const env = appEnv('LANG');
 	if (isLocale(env)) return env;
 	const l = getInstance().lang;
 	return isLocale(l) ? l : 'en';
@@ -103,7 +104,7 @@ export function announceSetup() {
 	console.log(
 		[
 			'',
-			'  Pontaj is not set up yet. Open this address to create the first account:',
+			'  Hourbook is not set up yet. Open this address to create the first account:',
 			'',
 			`    ${base}/setup?token=${setupToken()}`,
 			'',

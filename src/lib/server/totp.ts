@@ -1,6 +1,6 @@
 import * as OTPAuth from 'otpauth';
 
-const ISSUER = 'Pontaj';
+const ISSUER = 'Hourbook';
 
 export function newSecret(): string {
 	return new OTPAuth.Secret({ size: 20 }).base32;

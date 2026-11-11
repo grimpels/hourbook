@@ -57,7 +57,7 @@
 	);
 </script>
 
-<svelte:head><title>{t('nav.settings')} · Pontaj</title></svelte:head>
+<svelte:head><title>{t('nav.settings')} · Hourbook</title></svelte:head>
 
 <AppBar titlu={t('nav.settings')}>
 </AppBar>
@@ -180,7 +180,7 @@
 			<div class="f2"><label for="pass">{t('settings.password')} {data.smtpSet ? t('settings.keepPass') : ''}</label>
 				<input id="pass" name="pass" type="password" autocomplete="new-password" /></div>
 			<div class="f4"><label for="from">{t('settings.from')}</label>
-				<input id="from" name="from" value={data.smtp.from} placeholder="Pontaj &lt;pontaj@example.com&gt;" /></div>
+				<input id="from" name="from" value={data.smtp.from} placeholder="Hourbook &lt;hourbook@example.com&gt;" /></div>
 			<div class="f4"><button class="btn btn-primary">{t('settings.saveSmtp')}</button></div>
 		</form>
 

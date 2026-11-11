@@ -1,5 +1,5 @@
 {
-	"name": "pontaj",
+	"name": "hourbook",
 	"version": "1.0.0",
 	"description": "Self-hosted time tracking with timesheet reports, document templates and email delivery.",
 	"license": "MIT",

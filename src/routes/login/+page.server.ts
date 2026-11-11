@@ -32,7 +32,7 @@ export const actions: Actions = {
 		// gresita ar costa serverul o derivare costisitoare.
 		const wait = checkLogin(ip, username);
 		if (wait > 0) {
-			console.warn(`[pontaj] sign-in blocked ip=${ip} user=${username} remaining=${wait}s`);
+			console.warn(`[hourbook] sign-in blocked ip=${ip} user=${username} remaining=${wait}s`);
 			// 429, nu 400: cererea e perfect valida, doar vine prea des. `Retry-After`
 			// e antetul standard prin care clientul afla cat sa astepte.
 			setHeaders({ 'Retry-After': String(wait) });
@@ -51,7 +51,7 @@ export const actions: Actions = {
 		// 401, nu 400: datele trimise sunt valide ca forma, doar nu se potrivesc.
 		if (!user || !verifyPassword(password, user.password_hash)) {
 			const locked = recordFailure(ip, username);
-			console.warn(`[pontaj] wrong password ip=${ip} user=${username}${locked ? ' -> LOCKED' : ''}`);
+			console.warn(`[hourbook] wrong password ip=${ip} user=${username}${locked ? ' -> LOCKED' : ''}`);
 			return fail(401, { error: translate(lang, 'login.bad'), username });
 		}
 
@@ -62,7 +62,7 @@ export const actions: Actions = {
 			if (!code) return fail(401, { needCode: true, username });
 			if (!verifyTotp(user.totp_secret!, code)) {
 				const locked = recordFailure(ip, username);
-				console.warn(`[pontaj] wrong 2FA code ip=${ip} user=${username}${locked ? ' -> LOCKED' : ''}`);
+				console.warn(`[hourbook] wrong 2FA code ip=${ip} user=${username}${locked ? ' -> LOCKED' : ''}`);
 				return fail(401, { needCode: true, error: translate(lang, 'err.badCode'), username });
 			}
 		}

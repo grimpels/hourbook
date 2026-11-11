@@ -1,7 +1,7 @@
 import { db } from './db';
 
 // Setarile stau in tabelul cheie-valoare, serializate JSON. Parola SMTP ajunge
-// astfel in clar in `data/pontaj.db` — la fel ca oricare `.env` de pe server.
+// astfel in clar in fisierul bazei — la fel ca oricare `.env` de pe server.
 // De aceea fisierul bazei nu trebuie sa iasa din director si nu se comite.
 export function getSetting<T>(key: string, fallback: T): T {
 	const row = db.prepare('SELECT value FROM settings WHERE key = ?').get(key) as

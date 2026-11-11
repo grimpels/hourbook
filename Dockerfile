@@ -16,7 +16,7 @@ RUN apk add --no-cache tzdata su-exec
 WORKDIR /app
 ENV NODE_ENV=production
 ENV PORT=3000
-ENV PONTAJ_DB=/data/pontaj.db
+ENV HOURBOOK_DB=/data/hourbook.db
 
 COPY --from=build /app/build ./build
 COPY --from=build /app/node_modules ./node_modules

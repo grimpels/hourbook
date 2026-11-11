@@ -4,7 +4,8 @@ import type { ro } from './ro.ts';
 
 export const en: Record<keyof typeof ro, string> = {
 	// --- General
-	'app.name': 'Pontaj',
+	'app.name': 'Hourbook',
+	'nav.brand': 'Time',
 	'nav.home': 'Timesheet',
 	'nav.report': 'Report',
 	'nav.clients': 'Clients',
@@ -132,8 +133,8 @@ export const en: Record<keyof typeof ro, string> = {
 	'csv.project': 'Project',
 	'csv.total': 'TOTAL',
 	'mail.subject': 'Timesheet',
-	'mail.testSubject': 'Pontaj test',
-	'mail.testBody': 'If you are reading this, sending from Pontaj works.',
+	'mail.testSubject': 'Hourbook test',
+	'mail.testBody': 'If you are reading this, sending from Hourbook works.',
 	'mail.testBy': 'Sent by {user}.',
 
 	// --- Clients
@@ -381,7 +382,7 @@ export const en: Record<keyof typeof ro, string> = {
 	'err.testAddress': 'Enter an address for the test',
 
 	// --- Instalare
-	'setup.title': 'Set up Pontaj',
+	'setup.title': 'Set up Hourbook',
 	'setup.intro': 'A few steps, once. Everything except the address can be changed later in Settings.',
 	'setup.token': 'Setup code',
 	'setup.tokenHelp': 'It is printed in the server log, for example by {cmd}. It changes every time the server restarts.',
@@ -390,7 +391,7 @@ export const en: Record<keyof typeof ro, string> = {
 	'setup.badUser': 'Choose a username (at most 64 characters)',
 	'setup.pwMismatch': 'The passwords do not match',
 	'setup.address': 'Site address',
-	'setup.origin': 'Address where Pontaj will be opened',
+	'setup.origin': 'Address where Hourbook will be opened',
 	'setup.originHelp': 'With https:// if the site has a certificate. Filled in from the current address.',
 	'setup.fixedOrigin': 'Set by the ORIGIN environment variable.',
 	'setup.proxy': 'There is a reverse proxy in front (Caddy, nginx, Traefik…)',

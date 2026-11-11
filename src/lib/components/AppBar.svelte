@@ -72,7 +72,7 @@
 <header class="bar no-print">
 	<div class="fundal-nav">
 	<div class="container rand-nav">
-		<a class="brand" href="/">{t('app.name')}</a>
+		<a class="brand" href="/">{t('nav.brand')}</a>
 		<nav>
 			{#each sectiuni.slice(1) as s}
 				<a href={s.href} class:activ={activ(s.href)}>{s.text}</a>

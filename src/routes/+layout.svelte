@@ -9,7 +9,7 @@
 </script>
 
 <svelte:head>
-	<title>Pontaj</title>
+	<title>Hourbook</title>
 	<meta name="robots" content="noindex, nofollow" />
 </svelte:head>
 

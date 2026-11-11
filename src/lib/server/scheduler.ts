@@ -30,7 +30,7 @@ export async function runScheduled(now = new Date()): Promise<number> {
 	const s = getSchedule();
 	if (!isDue(now, s)) return 0;
 	if (!smtpConfigured()) {
-		console.warn('[pontaj] scheduled report skipped: SMTP is not configured');
+		console.warn('[hourbook] scheduled report skipped: SMTP is not configured');
 		return 0;
 	}
 
@@ -62,7 +62,7 @@ export async function runScheduled(now = new Date()): Promise<number> {
 		});
 		if (res.ok) sent++;
 		console.log(
-			`[pontaj] scheduled report ${c.name} -> ${c.doc_email} ${res.ok ? 'sent' : 'FAILED: ' + res.detail}`
+			`[hourbook] scheduled report ${c.name} -> ${c.doc_email} ${res.ok ? 'sent' : 'FAILED: ' + res.detail}`
 		);
 	}
 	return sent;
@@ -71,7 +71,7 @@ export async function runScheduled(now = new Date()): Promise<number> {
 export function startScheduler() {
 	if (timer) return;
 	timer = setInterval(() => {
-		runScheduled().catch((e) => console.error('[pontaj] scheduler:', e));
+		runScheduled().catch((e) => console.error('[hourbook] scheduler:', e));
 	}, TICK_MS);
 	// `unref` ca ticul sa nu tina procesul in viata la oprire.
 	timer.unref?.();

@@ -5,7 +5,8 @@
 // deveni si element (<code>, <strong>, <em>).
 export const ro = {
 	// --- General
-	'app.name': 'Pontaj',
+	'app.name': 'Hourbook',
+	'nav.brand': 'Time',
 	'nav.home': 'Pontaj',
 	'nav.report': 'Raport',
 	'nav.clients': 'Clienți',
@@ -134,8 +135,8 @@ export const ro = {
 	'csv.project': 'Proiect',
 	'csv.total': 'TOTAL',
 	'mail.subject': 'Pontaj',
-	'mail.testSubject': 'Test Pontaj',
-	'mail.testBody': 'Dacă citești asta, trimiterea din Pontaj funcționează.',
+	'mail.testSubject': 'Test Hourbook',
+	'mail.testBody': 'Dacă citești asta, trimiterea din Hourbook funcționează.',
 	'mail.testBy': 'Trimis de {user}.',
 
 	// --- Clienti
@@ -385,7 +386,7 @@ export const ro = {
 	'err.testAddress': 'Completează o adresă pentru test',
 
 	// --- Instalare
-	'setup.title': 'Instalare Pontaj',
+	'setup.title': 'Instalare Hourbook',
 	'setup.intro': 'Câțiva pași, o singură dată. Toate se pot schimba mai târziu din Setări, în afară de adresă.',
 	'setup.token': 'Codul de instalare',
 	'setup.tokenHelp': 'Apare în log-ul serverului, de exemplu cu {cmd}. Se schimbă la fiecare repornire.',
@@ -394,7 +395,7 @@ export const ro = {
 	'setup.badUser': 'Alege un nume de utilizator (cel mult 64 de caractere)',
 	'setup.pwMismatch': 'Parolele nu se potrivesc',
 	'setup.address': 'Adresa site-ului',
-	'setup.origin': 'Adresa la care se va deschide Pontaj',
+	'setup.origin': 'Adresa la care se va deschide Hourbook',
 	'setup.originHelp': 'Cu https:// dacă site-ul are certificat. Completată din adresa de acum.',
 	'setup.fixedOrigin': 'Stabilită prin variabila de mediu ORIGIN.',
 	'setup.proxy': 'În fața aplicației stă un proxy (Caddy, nginx, Traefik…)',

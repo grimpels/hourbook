@@ -133,7 +133,7 @@
 	});
 </script>
 
-<svelte:head><title>{t('nav.clients')} · Pontaj</title></svelte:head>
+<svelte:head><title>{t('nav.clients')} · Hourbook</title></svelte:head>
 
 <AppBar titlu={t('clients.title')}>
 	{#snippet actiuni()}

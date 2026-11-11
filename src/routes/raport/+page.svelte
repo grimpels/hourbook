@@ -126,7 +126,7 @@
 	let raportTok = $derived(i18n.prefs.lang === 'en' ? '{report}' : '{raport}');
 </script>
 
-<svelte:head><title>{t('nav.report')} · Pontaj</title></svelte:head>
+<svelte:head><title>{t('nav.report')} · Hourbook</title></svelte:head>
 
 <AppBar titlu={t('nav.report')}>
 	{#snippet actiuni()}
