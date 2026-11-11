@@ -1,0 +1,28 @@
+# Optional: automatic HTTPS with Caddy, for a server that has no web server yet.
+# Needs a domain pointing at this server and ports 80/443 free. Set
+# PONTAJ_DOMAIN in .env, then:
+#
+#   docker compose -f docker-compose.yml -f docker-compose.https.yml up -d
+#
+# (or put COMPOSE_FILE=docker-compose.yml:docker-compose.https.yml in .env).
+services:
+  pontaj:
+    # Reachable only through Caddy.
+    ports: !reset []
+
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    command: caddy reverse-proxy --from ${PONTAJ_DOMAIN:?Set PONTAJ_DOMAIN in .env} --to pontaj:3000
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      # Certificates. Keep this volume, or Caddy asks for new ones on every start.
+      - caddy_data:/data
+    depends_on:
+      - pontaj
+
+volumes:
+  caddy_data:

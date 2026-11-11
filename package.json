@@ -1,0 +1,37 @@
+{
+	"name": "pontaj",
+	"version": "1.0.0",
+	"description": "Self-hosted time tracking with timesheet reports, document templates and email delivery.",
+	"license": "MIT",
+	"private": true,
+	"type": "module",
+	"engines": {
+		"node": ">=24"
+	},
+	"scripts": {
+		"dev": "vite dev",
+		"build": "vite build",
+		"preview": "vite preview",
+		"prepare": "svelte-kit sync || echo ''",
+		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
+		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
+		"test": "for f in tests/*.test.mjs; do node --experimental-strip-types \"$f\" > /dev/null || { node --experimental-strip-types \"$f\" | grep -v \"^  ok\"; exit 1; }; done; echo All tests passed"
+	},
+	"devDependencies": {
+		"@sveltejs/adapter-auto": "^7.0.1",
+		"@sveltejs/adapter-node": "^5.5.7",
+		"@sveltejs/kit": "^2.63.0",
+		"@sveltejs/vite-plugin-svelte": "^7.1.2",
+		"@types/node": "^26.5.0",
+		"@types/qrcode": "^1.5.6",
+		"svelte": "^5.56.1",
+		"svelte-check": "^4.6.0",
+		"typescript": "^6.0.3",
+		"vite": "^8.0.16"
+	},
+	"dependencies": {
+		"nodemailer": "^10.0.1",
+		"otpauth": "^9.5.2",
+		"qrcode": "^1.5.4"
+	}
+}

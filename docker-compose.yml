@@ -1,0 +1,19 @@
+# Pontaj — time tracking. Start with `docker compose up -d`, then open the
+# setup address printed by `docker compose logs pontaj`.
+services:
+  pontaj:
+    image: ghcr.io/grimpels/pontaj:latest
+    build: .
+    restart: unless-stopped
+    ports:
+      - "${PONTAJ_PORT:-3000}:3000"
+    # Optional settings (see .env.example). The file may be missing.
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      # Time zone for scheduled report emails, e.g. Europe/London.
+      TZ: ${TZ:-UTC}
+    volumes:
+      # The whole database is one SQLite file in here. Back up this folder.
+      - ./data:/data

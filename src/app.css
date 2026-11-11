@@ -1,0 +1,298 @@
+/* Paleta: un singur accent, restul neutru. Definita intai pentru lumina,
+   apoi rescrisa pentru intuneric — nicio culoare nu exista doar in media query. */
+:root {
+	--bg: #f6f6f5;
+	--surface: #ffffff;
+	--surface-2: #fafaf9;
+	--border: #e4e4e1;
+	--border-strong: #d0d0cb;
+	--text: #1c1c1a;
+	--text-dim: #6b6b66;
+	--text-faint: #9a9a94;
+	--accent: #2f6f4f;
+	--accent-soft: #e7f0ea;
+	--accent-text: #ffffff;
+	--danger: #a33a2a;
+	--radius: 8px;
+	--shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 4px 12px rgba(0, 0, 0, 0.04);
+	color-scheme: light;
+}
+
+/* Tema. Trei stari: `system` (fara atribut), `light` si `dark` (atribut pe <html>,
+   pus din cookie inca de la randarea pe server, deci fara palpaire la incarcare).
+   Paleta luminoasa e definita pe `:root` gol; cea intunecata se rescrie in doua
+   locuri — media query (pentru `system`) si `[data-theme="dark"]` (alegere explicita). */
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) {
+		--bg: #161614;
+		--surface: #1e1e1c;
+		--surface-2: #232321;
+		--border: #33332f;
+		--border-strong: #45453f;
+		--text: #ececE8;
+		--text-dim: #a3a39c;
+		--text-faint: #6f6f68;
+		--accent: #7fbf9a;
+		--accent-soft: #26332c;
+		--accent-text: #10201700;
+		--shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+		--accent-text: #10201a;
+		color-scheme: dark;
+	}
+}
+
+:root[data-theme='dark'] {
+	--bg: #161614;
+	--surface: #1e1e1c;
+	--surface-2: #232321;
+	--border: #33332f;
+	--border-strong: #45453f;
+	--text: #ecece8;
+	--text-dim: #a3a39c;
+	--text-faint: #6f6f68;
+	--accent: #7fbf9a;
+	--accent-soft: #26332c;
+	--accent-text: #10201a;
+	--shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+	color-scheme: dark;
+}
+
+/* Paleta de etichete pentru clienti si proiecte.
+   `--c-line` e bara din stanga intrarii, `--c-bg` fundalul, `--c-text` textul. */
+:root {
+	--c-implicit-line: var(--accent);
+	--c-implicit-bg: var(--accent-soft);
+	--c-albastru-line: #3b6ea5;   --c-albastru-bg: #e6eef7;
+	--c-verde-line: #3f7d4f;      --c-verde-bg: #e7f1e9;
+	--c-turcoaz-line: #2f7f7f;    --c-turcoaz-bg: #e2f0f0;
+	--c-mov-line: #6b5aa6;        --c-mov-bg: #ece9f6;
+	--c-roz-line: #a8548a;        --c-roz-bg: #f7e8f1;
+	--c-rosu-line: #a8443a;       --c-rosu-bg: #f7e7e5;
+	--c-portocaliu-line: #a4652a; --c-portocaliu-bg: #f7eddf;
+	--c-galben-line: #8a7420;     --c-galben-bg: #f6f1d9;
+	--c-maro-line: #7a5c46;       --c-maro-bg: #f0e9e3;
+	--c-gri-line: #6b6b66;        --c-gri-bg: #ececea;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root:not([data-theme='light']) {
+		--c-albastru-bg: #1c2a3a;   --c-albastru-line: #7fa8d6;
+		--c-verde-bg: #1d2f23;      --c-verde-line: #85c295;
+		--c-turcoaz-bg: #17302f;    --c-turcoaz-line: #77c3c3;
+		--c-mov-bg: #272338;        --c-mov-line: #a79ada;
+		--c-roz-bg: #35202d;        --c-roz-line: #d891bd;
+		--c-rosu-bg: #341f1c;       --c-rosu-line: #d68b82;
+		--c-portocaliu-bg: #33261a; --c-portocaliu-line: #d2a06a;
+		--c-galben-bg: #302c17;     --c-galben-line: #c8b45f;
+		--c-maro-bg: #2b2320;       --c-maro-line: #b79b85;
+		--c-gri-bg: #2a2a28;        --c-gri-line: #9a9a94;
+	}
+}
+
+:root[data-theme='dark'] {
+	--c-albastru-bg: #1c2a3a;   --c-albastru-line: #7fa8d6;
+	--c-verde-bg: #1d2f23;      --c-verde-line: #85c295;
+	--c-turcoaz-bg: #17302f;    --c-turcoaz-line: #77c3c3;
+	--c-mov-bg: #272338;        --c-mov-line: #a79ada;
+	--c-roz-bg: #35202d;        --c-roz-line: #d891bd;
+	--c-rosu-bg: #341f1c;       --c-rosu-line: #d68b82;
+	--c-portocaliu-bg: #33261a; --c-portocaliu-line: #d2a06a;
+	--c-galben-bg: #302c17;     --c-galben-line: #c8b45f;
+	--c-maro-bg: #2b2320;       --c-maro-line: #b79b85;
+	--c-gri-bg: #2a2a28;        --c-gri-line: #9a9a94;
+}
+
+/* Sistemul de masuri. Nu inventat aici: scara de spatiere pe 4 px si inaltimile
+   fixe de control vin din conventiile obisnuite (Material, shadcn), iar
+   containerul in trepte e cel din Bootstrap. Motivul e practic — o scara pe care
+   o stie toata lumea se nimereste mai des decat una improvizata. */
+:root {
+	/* spatiere, multipli de 4 */
+	--s1: 4px;
+	--s2: 8px;
+	--s3: 12px;
+	--s4: 16px;
+	--s5: 24px;
+	--s6: 32px;
+
+	/* text */
+	--text-xs: 12px;
+	--text-sm: 13px;
+	--text-md: 14px;
+	--text-lg: 16px;
+	--text-xl: 20px;
+
+	/* inaltimea controalelor: butoane, campuri si selectoare au aceeasi
+	   inaltime, ca sa se alinieze pe orice rand */
+	--control-h: 36px;
+	--control-h-sm: 30px;
+
+	--card-pad: var(--s4);
+}
+
+@media (min-width: 768px) {
+	:root { --card-pad: var(--s5); }
+}
+
+/* Container in trepte, ca in Bootstrap: fluid pe telefon, apoi latimi fixe.
+   Sub 768 px se trece pe asezarea de mobil. */
+.container {
+	width: 100%;
+	margin-inline: auto;
+	padding-inline: var(--s4);
+}
+
+@media (min-width: 768px) { .container { max-width: 720px; padding-inline: var(--s5); } }
+@media (min-width: 992px) { .container { max-width: 960px; } }
+@media (min-width: 1200px) { .container { max-width: 1140px; } }
+@media (min-width: 1400px) { .container { max-width: 1320px; } }
+
+* { box-sizing: border-box; }
+
+html, body {
+	margin: 0;
+	padding: 0;
+	/* Nicio pagina nu deruleaza pe orizontala: continutul lat isi are propriul
+	   container cu scroll (tabele, grila saptamanii). */
+	overflow-x: hidden;
+	max-width: 100%;
+	background: var(--bg);
+	color: var(--text);
+	font: 15px/1.5 ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+	-webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.01em; margin: 0; }
+h1 { font-size: var(--text-lg); }
+h2 { font-size: var(--text-md); }
+h3 { font-size: var(--text-sm); }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+
+input[type="text"], input[type="password"], input[type="email"], input[type="number"],
+input[type="date"], input[type="time"], select {
+	width: 100%;
+	height: var(--control-h);
+	padding: 0 10px;
+	background: var(--surface);
+	border: 1px solid var(--border-strong);
+	border-radius: 6px;
+	font-size: var(--text-md);
+	outline: none;
+}
+textarea {
+	width: 100%;
+	padding: 8px 10px;
+	background: var(--surface);
+	border: 1px solid var(--border-strong);
+	border-radius: 6px;
+	font-size: var(--text-md);
+	outline: none;
+}
+/* Inelul de focalizare, nu doar schimbarea culorii de chenar: se vede si la
+   navigarea cu tastatura, nu doar la clic. */
+input:focus-visible, textarea:focus-visible, select:focus-visible,
+.btn:focus-visible, .tab:focus-visible {
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	height: var(--control-h);
+	padding: 0 14px;
+	background: var(--surface);
+	border: 1px solid var(--border-strong);
+	border-radius: 6px;
+	font-size: var(--text-md);
+	font-weight: 500;
+	cursor: pointer;
+	white-space: nowrap;
+	transition: background 0.12s, border-color 0.12s;
+}
+.btn:hover { background: var(--surface-2); border-color: var(--text-faint); }
+.btn-primary {
+	background: var(--accent);
+	border-color: var(--accent);
+	color: var(--accent-text);
+	font-weight: 500;
+}
+.btn-primary:hover { background: var(--accent); filter: brightness(1.08); }
+.btn-danger { color: var(--danger); border-color: var(--border-strong); }
+.btn-danger:hover { background: color-mix(in srgb, var(--danger) 8%, transparent); }
+.btn-ghost { background: transparent; border-color: transparent; }
+.btn-ghost:hover { background: var(--surface-2); border-color: var(--border); }
+.btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+label { display: block; font-size: 13px; color: var(--text-dim); margin-bottom: 4px; }
+
+.card {
+	background: var(--surface);
+	border: 1px solid var(--border);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+
+/* Padding-ul cardului vine din token, nu din fiecare pagina. `.card.plat` e
+   pentru cardurile care contin un tabel pe toata latimea. */
+.card.pad { padding: var(--card-pad); }
+
+.btn.small { height: var(--control-h-sm); padding: 0 10px; font-size: var(--text-sm); }
+.btn.ic { width: var(--control-h); padding: 0; }
+.btn.small.ic { width: var(--control-h-sm); }
+.btn.ic svg {
+	width: 18px;
+	height: 18px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 1.7;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	display: block;
+}
+
+/* Bara de sus, aceeasi pe toate paginile. Ramane lipita sus: pe liste lungi si
+   pe calendar, navigarea trebuie sa fie la indemana fara sa derulezi inapoi. */
+.bar {
+	position: sticky;
+	top: 0;
+	z-index: 20;
+	background: var(--surface);
+	border-bottom: 1px solid var(--border);
+}
+
+.error, .ok {
+	padding: 8px 10px;
+	border-radius: 6px;
+	font-size: var(--text-md);
+}
+
+.error {
+	background: color-mix(in srgb, var(--danger) 10%, transparent);
+	border: 1px solid color-mix(in srgb, var(--danger) 35%, transparent);
+	color: var(--danger);
+}
+
+/* Confirmarile erau definite separat in doua pagini, cu stiluri usor diferite. */
+.ok {
+	background: var(--accent-soft);
+	border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+}
+
+.eticheta {
+	font-size: var(--text-xs);
+	color: var(--text-dim);
+	text-transform: none;
+	letter-spacing: 0;
+}
+
+.muted { color: var(--text-dim); }
+.tabular { font-variant-numeric: tabular-nums; }
+
+@media print {
+	.no-print { display: none !important; }
+	body { background: #fff; }
+}

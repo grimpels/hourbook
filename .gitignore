@@ -1,0 +1,7 @@
+node_modules/
+.svelte-kit/
+build/
+data/
+.env
+# Configuratia unei instalari anume (adresa, reteaua proxy-ului), peste docker-compose.yml.
+docker-compose.local.yml
