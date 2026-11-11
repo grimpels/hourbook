@@ -42,7 +42,7 @@
 	const [dbInainte, dbDupa] = t('setup.dbInfo').split('{path}');
 </script>
 
-<svelte:head><title>{t('setup.title')} · Hourbook</title></svelte:head>
+<svelte:head><title>{t('setup.title')}</title></svelte:head>
 
 <div class="wrap">
 	<form method="POST" class="card" onsubmit={() => (loading = true)}>
